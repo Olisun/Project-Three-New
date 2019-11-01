@@ -1,10 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import BudgetInput from './components/BudgetInputForm';
 import WishlistInput from './components/WishlistInputForm';
-import Chart from './components/Rechart';
+// import Chart from './components/Rechart';
 
 class App extends Component {
   render() {
@@ -13,7 +12,7 @@ class App extends Component {
           <div className="container">
         <BudgetInput />
         <WishlistInput />
-        <Rechart />
+        {/* <Rechart /> */}
       </div>
       </Router>
 

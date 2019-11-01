@@ -27,16 +27,6 @@ const WishlistInput = (props) => {
          </Col>
        </FormGroup>
 
-       <FormGroup row>
-        <Label for="bought" sm={2}>Purchased:</Label>
-        <Col sm={3}>
-          <Input type="select" name="bought" id="bought">
-            <option>Yes</option>
-            <option>No</option>
-          </Input>
-        </Col>
-      </FormGroup>
-
         <FormGroup check row>
          <Col sm={{ size: 20, offset: 2 }}>
            <Button>Submit</Button>

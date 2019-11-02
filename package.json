@@ -28,7 +28,8 @@
     "concurrently": "^5.0.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "mongoose": "^5.7.7",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
     "nodemon": "^1.19.4"
   }
 }

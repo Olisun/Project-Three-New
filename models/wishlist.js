@@ -1,13 +1,34 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (sequelize, DataTypes) => {
+  const Wishlist = sequelize.define("Wishlist", {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    bought: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    }
+  }, {
+    timestamps: false
+  });
 
-const wishlistSchema = new Schema({
-  name: { type: String, required: true },
-  image: { type: String, required: true },
-  price: { type: Number, required: true },
-  bought: { type: Boolean, default: false }
-});
+  Wishlist.associate = function (models) {
 
-const Wishlist = mongoose.model("Wishlist", wishlistSchema);
+    Wishlist.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'cascade'
+    });
+  };
 
-module.exports = Wishlist;
+  return Wishlist;
+}

@@ -1,15 +1,42 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (sequelize, DataTypes) => {
+    const Budget = sequelize.define("Budget", {
+        income: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        Rent: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        Utilities: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        Food: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        Transportation: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        Misc: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        }
+    }, {
+        timestamps: false
+    });
 
-const budgetSchema = new Schema({
-    income: {type: Number, required: true},
-    rent: Number,
-    utilities: Number,
-    food: Number,
-    transportation: Number,
-    misc: Number
-});
+    Budget.associate = function (models) {
 
-const Budget = mongoose.model("Budget", budgetSchema);
+        Budget.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            },
+            onDelete: 'cascade'
+        });
+    };
 
-module.exports = Budget;
+    return Budget;
+}

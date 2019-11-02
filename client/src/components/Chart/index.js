@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   PieChart, Pie, Sector, Cell,
 } from 'recharts';
+import "./style.css"
 
 const data = [
   { name: 'monthlyIncome', value: 5000 },
@@ -32,26 +33,26 @@ const renderCustomizedLabel = ({
 };
 
 class Rechart extends PureComponent {
-  // static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
-
   render() {
     return (
-      <PieChart width={800} height={800}>
-        <Pie
-          data={data}
-          cx={200}
-          cy={200}
-          labelLine={true}
-          label={renderCustomizedLabel}
-          outerRadius={160}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-          }
-        </Pie>
-      </PieChart>
+      <div className="test">
+        <PieChart width={400} height={400}>
+          <Pie
+            data={data}
+           cx={200}
+           cy={200}
+           labelLine={true}
+           label={renderCustomizedLabel}
+            outerRadius={150}
+            fill="#8884d8"
+            dataKey="value"
+          >
+           {
+             data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+           }
+         </Pie>
+        </PieChart>
+      </div>
     );
   }
 }

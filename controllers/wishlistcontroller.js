@@ -41,4 +41,13 @@ module.exports = {
       res.json(dbWishlist);
     });
   },
+  update: function (req, res) {
+    db.Wishlist.update({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbWishlist) {
+      res.json(dbWishlist);
+    });
+  }
 };

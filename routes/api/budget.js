@@ -9,8 +9,7 @@ router.route("/")
 // Matches with "/api/budget/:id"
 router
     .route("/:id")
-    .get(budgetController.findById)
-    .put(budgetController.update)
-    .delete(budgetController.remove);
+    .get(budgetController.findOne)
+    .put(budgetController.update);
 
 module.exports = router;

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-const router = require("express").Router();
-=======
 const router = require("express").Router();
 const budgetController = require("../../controllers/budgetcontroller");
 
@@ -12,9 +9,7 @@ router.route("/")
 // Matches with "/api/budget/:id"
 router
     .route("/:id")
-    .get(budgetController.findById)
-    .put(budgetController.update)
-    .delete(budgetController.remove);
+    .get(budgetController.findOne)
+    .put(budgetController.update);
 
 module.exports = router;
->>>>>>> 7343ea10226c570444192077cfbc03903b4bb12b

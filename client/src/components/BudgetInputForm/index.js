@@ -1,63 +1,97 @@
-import React from 'react';
+import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import "./style.css"
 
-const BudgetInput = (props) => {
-  return (
-    <div className="test">
-      <Form>
-        <h3 id="formLabel">Budget Input Form</h3>
-        <FormGroup row>
-         <Label for="monthlyIncome" id="incomeLabel" sm={5}>Monthly Income:</Label>
-         <Col sm={5}>
-           <Input type="number" name="monthlyIncome" id="monthlyIncome" placeholder="" />
-         </Col>
+class BudgetInput extends Component {
+  state = {
+    monthlyIncome: 0,
+    rentOrMortgage: 0,
+    utilities: 0,
+    food: 0,
+    transportation: 0,
+    misc: 0
+  };
+
+  handleInputChange = event => {
+    let value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log('button clicked');
+    this.setState([
+      { monthlyIncome: this.state.monthlyIncome },
+      { rentOrMortgage: this.state.rentOrMortgage },
+      { utilities: this.state.utilities },
+      { food: this.state.food },
+      { transportation: this.state.transportation },
+      { misc: this.state.misc },
+    ])
+  }
+
+  render () {
+    return (
+      <div className="test">
+        <Form>
+          <h3 id="formLabel">Budget Input Form</h3>
+          <FormGroup row>
+          <Label for="monthlyIncome" id="monthlyIncome" sm={5}>Monthly Income:</Label>
+           <Col sm={5}>
+             <Input type="number" name="monthlyIncome" value={this.props.value} onChange={this.handleInputChange} id="monthlyIncome" placeholder="" />
+           </Col>
+         </FormGroup>
+
+         <FormGroup row>
+           <Label for="rentMortgage" className="label" sm={5}>Rent/Mortgage:</Label>
+           <Col sm={5}>
+             <Input type="number" name="rentOrMortgage" value={this.props.value} onChange={this.handleInputChange} id="rentOrMortgage" placeholder="" />
+          </Col>
         </FormGroup>
 
-       <FormGroup row>
-         <Label for="rentMortgage" className="label" sm={5}>Rent/Mortgage:</Label>
-         <Col sm={5}>
-           <Input type="number" name="rentMortgage" id="rentMortgage" placeholder="" />
-         </Col>
-       </FormGroup>
-
-       <FormGroup row>
+        <FormGroup row>
           <Label for="utilities" className="label" sm={5}>Utilities:</Label>
           <Col sm={5}>
-           <Input type="number" name="utilities" id="utilities" placeholder="" />
-         </Col>
-       </FormGroup>
-
-       <FormGroup row>
-          <Label for="food" className="label" sm={5}>Groceries/Food:</Label>
-          <Col sm={5}>
-            <Input type="number" name="food" id="food" placeholder="" />
-          </Col>
-       </FormGroup>
-
-       <FormGroup row>
-          <Label for="transportation" className="label" sm={5}>Transportation:</Label>
-          <Col sm={5}>
-            <Input type="number" name="transportation" id="transportation" placeholder="" />
-          </Col>
-       </FormGroup>
-
-       <FormGroup row>
-         <Label for="misc" className="label" sm={5}>Misc. Expenses:</Label>
-         <Col sm={5}>
-           <Input type="number" name="misc" id="misc" placeholder="" />
-          </Col>
+            <Input type="number" name="utilities" value={this.props.value} onChange={this.handleInputChange} id="utilities" placeholder="" />
+           </Col>
         </FormGroup>
 
-        <FormGroup check row>
-         <Col sm={{ size: 20, offset: 6 }}>
-           <Button>Submit</Button>
-         </Col>
+         <FormGroup row>
+           <Label for="food" className="label" sm={5}>Groceries/Food:</Label>
+            <Col sm={5}>
+              <Input type="number" name="food" value={this.props.value} onChange={this.handleInputChange} id="food" placeholder="" />
+            </Col>
         </FormGroup>
 
-     </Form>
-    </div>
-  );
+        <FormGroup row>
+           <Label for="transportation" className="label" sm={5}>Transportation:</Label>
+           <Col sm={5}>
+              <Input type="number" name="transportation" value={this.props.value} onChange={this.handleInputChange} id="transportation" placeholder="" />
+            </Col>
+        </FormGroup>
+
+         <FormGroup row>
+          <Label for="misc" className="label" sm={5}>Misc. Expenses:</Label>
+           <Col sm={5}>
+             <Input type="number" name="misc" value={this.props.value} onChange={this.handleInputChange} id="misc" placeholder="" />
+           </Col>
+          </FormGroup>
+
+         <FormGroup check row>
+          <Col sm={{ size: 20, offset: 6 }}>
+            <Button onClick={this.props.handleFormSubmit}>Submit</Button>
+           </Col>
+          </FormGroup>
+
+       </Form>
+      </div>
+   );
+  }
 }
+
 
 export default BudgetInput;

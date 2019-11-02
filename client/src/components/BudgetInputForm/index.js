@@ -1,55 +1,56 @@
 import React from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import "./style.css"
 
 const BudgetInput = (props) => {
   return (
-    <div className="container">
+    <div className="test">
       <Form>
-        <h2>Budget Input Form</h2>
+        <h3 id="formLabel">Budget Input Form</h3>
         <FormGroup row>
-         <Label for="monthlyIncome" sm={2}>Monthly Income:</Label>
-         <Col sm={3}>
+         <Label for="monthlyIncome" id="incomeLabel" sm={5}>Monthly Income:</Label>
+         <Col sm={5}>
            <Input type="number" name="monthlyIncome" id="monthlyIncome" placeholder="" />
          </Col>
         </FormGroup>
 
        <FormGroup row>
-         <Label for="rentOrMortgage" sm={2}>Rent or Mortgage:</Label>
-         <Col sm={3}>
-           <Input type="number" name="rentOrMortgage" id="rentOrMortgage" placeholder="" />
+         <Label for="rentMortgage" className="label" sm={5}>Rent/Mortgage:</Label>
+         <Col sm={5}>
+           <Input type="number" name="rentMortgage" id="rentMortgage" placeholder="" />
          </Col>
        </FormGroup>
 
        <FormGroup row>
-          <Label for="utilities" sm={2}>Utilities:</Label>
-          <Col sm={3}>
+          <Label for="utilities" className="label" sm={5}>Utilities:</Label>
+          <Col sm={5}>
            <Input type="number" name="utilities" id="utilities" placeholder="" />
          </Col>
        </FormGroup>
 
        <FormGroup row>
-          <Label for="food" sm={2}>Groceries and Dining:</Label>
-          <Col sm={3}>
+          <Label for="food" className="label" sm={5}>Groceries/Food:</Label>
+          <Col sm={5}>
             <Input type="number" name="food" id="food" placeholder="" />
           </Col>
        </FormGroup>
 
        <FormGroup row>
-          <Label for="transportation" sm={2}>Transportation:</Label>
-          <Col sm={3}>
+          <Label for="transportation" className="label" sm={5}>Transportation:</Label>
+          <Col sm={5}>
             <Input type="number" name="transportation" id="transportation" placeholder="" />
           </Col>
        </FormGroup>
 
        <FormGroup row>
-         <Label for="misc" sm={2}>Misc. Expenses:</Label>
-         <Col sm={3}>
+         <Label for="misc" className="label" sm={5}>Misc. Expenses:</Label>
+         <Col sm={5}>
            <Input type="number" name="misc" id="misc" placeholder="" />
           </Col>
         </FormGroup>
 
         <FormGroup check row>
-         <Col sm={{ size: 20, offset: 2 }}>
+         <Col sm={{ size: 20, offset: 6 }}>
            <Button>Submit</Button>
          </Col>
         </FormGroup>

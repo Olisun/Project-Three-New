@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Budget = sequelize.define("Budget", {
-        income: {
+        Income: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

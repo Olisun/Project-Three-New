@@ -39,8 +39,8 @@ class Rechart extends PureComponent {
         <PieChart width={400} height={400}>
           <Pie
             data={data}
-           cx={200}
-           cy={200}
+           cx={170}
+           cy={170}
            labelLine={true}
            label={renderCustomizedLabel}
             outerRadius={150}

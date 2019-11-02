@@ -1,37 +1,44 @@
 const db = require("../models");
 
-// Defining methods for the WishlistController
 module.exports = {
-  findAll: function(req, res) {
-    db.Wishlist
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findAllWishlist: function (req, res) {
+    db.Wishlist.findAll({
+      where: {
+        bought: false
+        // UserUuid: userID
+      }
+    }).then(function (dbWishlist) {
+      res.json(dbWishlist);
+    });
   },
-  findById: function(req, res) {
-    db.Wishlist
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findAllBought: function (req, res) {
+    db.Wishlist.findAll({
+      where: {
+        bought: true
+        // UserUuid: userID
+      }
+    }).then(function (dbWishlist) {
+      res.json(dbWishlist);
+    });
   },
-  create: function(req, res) {
-    db.Wishlist
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  create: function (req, res) {
+    console.log(req);
+    db.Wishlist.create({
+      name: req.body.name,
+      image: req.body.image,
+      price: req.body.price
+    }).then(function (newWishlist) {
+      console.log(newWishlist)
+      res.json(newWishlist);
+    })
   },
-  update: function(req, res) {
-    db.Wishlist
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  remove: function (req, res) {
+    db.Wishlist.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbWishlist) {
+      res.json(dbWishlist);
+    });
   },
-  remove: function(req, res) {
-    db.Wishlist
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  }
 };

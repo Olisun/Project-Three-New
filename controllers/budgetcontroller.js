@@ -1,37 +1,55 @@
 const db = require("../models");
 
-// Defining methods for the BudgetController
 module.exports = {
-  findAll: function(req, res) {
-    db.Budget
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findAll: function (req, res) {
+    // var userID = req.session.passport.user;
+    db.Budget.findAll({
+      // where: {
+      //   UserUuid: userID
+      // }
+    }).then(function (dbBudget) {
+      res.json(dbBudget);
+    });
   },
-  findById: function(req, res) {
-    db.Budget
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findOne: function (req, res) {
+    db.Budget.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbBudget) {
+      res.json(dbBudget);
+    });
   },
-  create: function(req, res) {
-    db.Budget
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  create: function (req, res) {
+    // var userID = req.session.passport.user;
+    // console.log(req.body)
+    db.Budget.create({
+      Income: req.body.Income,
+      Rent: req.body.Rent,
+      Utilities: req.body.Utilities,
+      Food: req.body.Food,
+      Transportation: req.body.Transportation,
+      Misc: req.body.Misc
+      // UserUuid: userID
+    }).then(function (newBudget) {
+      res.json(newBudget)
+    })
   },
-  update: function(req, res) {
-    db.Budget
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  remove: function(req, res) {
-    db.Budget
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  update: function (req, res) {
+    db.Budget.update({
+      Income: req.body.Income,
+      Rent: req.body.Rent,
+      Utilities: req.body.Utilities,
+      Food: req.body.Food,
+      Transportation: req.body.Transportation,
+      Misc: req.body.Misc
+    }, {
+      where: {
+        id: req.params.id
+      },
+      returning: true
+    }).then(function (dbBudget) {
+      res.json(dbBudget);
+    });
   }
 };

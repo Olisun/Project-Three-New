@@ -4,16 +4,7 @@ import {
 } from 'recharts';
 import "./style.css"
 
-const data = [
-  { name: 'monthlyIncome', value: 5000 },
-  { name: 'rentOrMortgage', value: 2000 },
-  { name: 'utilities', value: 300 },
-  { name: 'food', value: 1200 },
-  { name: 'transportation', value: 200 },
-  { name: 'misc', value: 200 },
-  { name: 'monthEndBal', value: 900 },
-  
-];
+let data = []
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 

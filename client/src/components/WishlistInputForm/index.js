@@ -4,6 +4,7 @@ import "./style.css"
 import API from '../../utils/API-wishlist.js'
 
 class WishlistInput extends Component {
+  
   state = {
     itemName: "",
     itemImage: "",

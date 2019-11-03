@@ -1,15 +1,17 @@
+// We made the components state-full rather than the pages. We are unsure if the stateful logic needs to be on the pages
+
 import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import "./style.css"
 
 class BudgetInput extends Component {
   state = {
-    monthlyIncome: 0,
-    rentOrMortgage: 0,
-    utilities: 0,
-    food: 0,
-    transportation: 0,
-    misc: 0
+    monthlyIncome: "",
+    rentOrMortgage: "",
+    utilities: "",
+    food: "",
+    transportation: "",
+    misc: ""
   };
 
   handleInputChange = event => {
@@ -41,55 +43,54 @@ class BudgetInput extends Component {
           <h3 id="formLabel">Budget Input Form</h3>
           <FormGroup row>
           <Label for="monthlyIncome" id="monthlyIncome" sm={5}>Monthly Income:</Label>
-           <Col sm={5}>
+            <Col sm={5}>
              <Input type="number" name="monthlyIncome" value={this.props.value} onChange={this.handleInputChange} id="monthlyIncome" placeholder="" />
            </Col>
-         </FormGroup>
+          </FormGroup>
 
-         <FormGroup row>
-           <Label for="rentMortgage" className="label" sm={5}>Rent/Mortgage:</Label>
-           <Col sm={5}>
+          <FormGroup row>
+          <Label for="rentMortgage" className="label" sm={5}>Rent/Mortgage:</Label>
+            <Col sm={5}>
              <Input type="number" name="rentOrMortgage" value={this.props.value} onChange={this.handleInputChange} id="rentOrMortgage" placeholder="" />
-          </Col>
-        </FormGroup>
+            </Col>
+          </FormGroup>
 
-        <FormGroup row>
+          <FormGroup row>
           <Label for="utilities" className="label" sm={5}>Utilities:</Label>
-          <Col sm={5}>
-            <Input type="number" name="utilities" value={this.props.value} onChange={this.handleInputChange} id="utilities" placeholder="" />
-           </Col>
-        </FormGroup>
+            <Col sm={5}>
+             <Input type="number" name="utilities" value={this.props.value} onChange={this.handleInputChange} id="utilities" placeholder="" />
+             </Col>
+          </FormGroup>
 
-         <FormGroup row>
-           <Label for="food" className="label" sm={5}>Groceries/Food:</Label>
+          <FormGroup row>
+          <Label for="food" className="label" sm={5}>Groceries/Food:</Label>
             <Col sm={5}>
               <Input type="number" name="food" value={this.props.value} onChange={this.handleInputChange} id="food" placeholder="" />
             </Col>
-        </FormGroup>
+          </FormGroup>
 
-        <FormGroup row>
-           <Label for="transportation" className="label" sm={5}>Transportation:</Label>
-           <Col sm={5}>
+          <FormGroup row>
+          <Label for="transportation" className="label" sm={5}>Transportation:</Label>
+            <Col sm={5}>
               <Input type="number" name="transportation" value={this.props.value} onChange={this.handleInputChange} id="transportation" placeholder="" />
             </Col>
-        </FormGroup>
+          </FormGroup>
 
-         <FormGroup row>
+          <FormGroup row>
           <Label for="misc" className="label" sm={5}>Misc. Expenses:</Label>
-           <Col sm={5}>
+            <Col sm={5}>
              <Input type="number" name="misc" value={this.props.value} onChange={this.handleInputChange} id="misc" placeholder="" />
-           </Col>
+            </Col>
           </FormGroup>
 
-         <FormGroup check row>
-          <Col sm={{ size: 20, offset: 6 }}>
-            <Button onClick={this.props.handleFormSubmit}>Submit</Button>
-           </Col>
+          <FormGroup check row>
+            <Col sm={{ size: 20, offset: 6 }}>
+              <Button onClick={this.props.handleFormSubmit}>Submit</Button>
+            </Col>
           </FormGroup>
-
-       </Form>
+        </Form>
       </div>
-   );
+    );
   }
 }
 

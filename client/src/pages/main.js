@@ -46,12 +46,12 @@ class Main extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    alert('button clicked')
-    if (this.state.itemName && this.state.imageUrl && this.state.price) {
+    if (this.state.itemName && this.state.itemImage && this.state.itemPrice) {
+      console.log(this.state.itemImage)
       API.saveItem({
-        itemName: this.state.itemName,
-        imageUrl: this.state.imageUrl,
-        price: this.state.price
+        name: this.state.itemName,
+        image: this.state.itemImage,
+        price: this.state.itemPrice
       })
         .then(res => this.loadItems())
         .catch(err => console.log(err));

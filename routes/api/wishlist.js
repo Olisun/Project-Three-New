@@ -5,7 +5,7 @@ const wishlistController = require("../../controllers/wishlistcontroller");
 // Matches with "/api/wishlist"
 router.route("/")
     .get(wishlistController.findAllWishlist)
-    .get(wishlistController.finadAllBought)
+    .get(wishlistController.findAllBought)
     .post(wishlistController.create);
 
 router.route("/:id")

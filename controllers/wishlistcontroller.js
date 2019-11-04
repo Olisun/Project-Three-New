@@ -23,6 +23,7 @@ module.exports = {
   },
   create: function (req, res) {
     console.log(req);
+    console.log("creating wishlist item")
     db.Wishlist.create({
       name: req.body.name,
       image: req.body.image,

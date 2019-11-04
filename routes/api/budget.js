@@ -7,8 +7,7 @@ router.route("/")
     .post(budgetController.create);
 
 // Matches with "/api/budget/:id"
-router
-    .route("/:id")
+router.route("/:id")
     .get(budgetController.findOne)
     .put(budgetController.update);
 

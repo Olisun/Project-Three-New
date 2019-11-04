@@ -20,15 +20,15 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
 
-  Wishlist.associate = function (models) {
+  // Wishlist.associate = function (models) {
 
-    Wishlist.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      },
-      onDelete: 'cascade'
-    });
-  };
+  //   Wishlist.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     },
+  //     onDelete: 'cascade'
+  //   });
+  // };
 
   return Wishlist;
 }

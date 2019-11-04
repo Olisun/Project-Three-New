@@ -5,14 +5,17 @@ import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap
 import "./style.css"
 
 class BudgetInput extends Component {
-  state = {
-    monthlyIncome: "",
-    rentOrMortgage: "",
-    utilities: "",
-    food: "",
-    transportation: "",
-    misc: ""
-  };
+  constructor() {
+    super()
+    this.state = {
+      monthlyIncome: "",
+      rentOrMortgage: "",
+      utilities: "",
+      food: "",
+      transportation: "",
+      misc: ""
+    };
+  }
 
   handleInputChange = event => {
     let value = event.target.value;

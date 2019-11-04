@@ -16,7 +16,7 @@ let data = [
   
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'purple', 'violet'];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#f24b7a', '#d3f93e', '#3e4af9'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -34,15 +34,17 @@ const renderCustomizedLabel = ({
 };
 
 class Rechart extends PureComponent {
-
-  state = {
-    activeIndex: 0,
-    list: data,
-    isToggled: {
-      status: false,
-      value: []
-    }
-  };
+  constructor() {
+    super()
+    this.state = {
+      activeIndex: 0,
+      list: data,
+      isToggled: {
+        status: false,
+        value: []
+     }
+   }
+  }
 
   onPieEnter = (data, index) => {
     this.setState({ activeIndex: index })

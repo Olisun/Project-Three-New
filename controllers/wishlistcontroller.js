@@ -27,7 +27,8 @@ module.exports = {
     db.Wishlist.create({
       name: req.body.name,
       image: req.body.image,
-      price: req.body.price
+      price: req.body.price,
+      bought: false
     }).then(function (newWishlist) {
       console.log(newWishlist)
       res.json(newWishlist);

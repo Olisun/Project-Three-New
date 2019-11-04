@@ -30,30 +30,30 @@ class Main extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    console.log(this.state.itemName)
-    if (this.state.itemName && this.state.imageUrl && this.state.price) {
-      API.saveItem({
-        itemName: this.state.itemName,
-        imageUrl: this.state.imageUrl,
-        price: this.state.price
-      })
-        .then(res => this.setState({itemName: "", itemImage: "", itemPrice: ""}))
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   console.log(this.state.itemName)
+  //   if (this.state.itemName && this.state.imageUrl && this.state.price) {
+  //     API.saveItem({
+  //       itemName: this.state.itemName,
+  //       imageUrl: this.state.imageUrl,
+  //       price: this.state.price
+  //     })
+  //       .then(res => this.setState({itemName: "", itemImage: "", itemPrice: ""}))
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    alert('button clicked')
-    if (this.state.itemName && this.state.imageUrl && this.state.price) {
+    if (this.state.itemName && this.state.itemImage && this.state.itemPrice) {
+      console.log(this.state.itemImage)
       API.saveItem({
-        itemName: this.state.itemName,
-        imageUrl: this.state.imageUrl,
-        price: this.state.price
+        name: this.state.itemName,
+        image: this.state.itemImage,
+        price: this.state.itemPrice
       })
-        .then(res => this.loadItems())
+        .then(res => this.setState({itemName: "", itemImage: "", itemPrice: ""}))
         .catch(err => console.log(err));
     }
   };

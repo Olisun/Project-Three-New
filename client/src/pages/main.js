@@ -4,13 +4,18 @@ import BudgetInput from '../components/BudgetInputForm'
 import WishlistInput from '../components/WishlistInputForm';
 import API from '../utils/API-wishlist'
 import Rechart from '../components/Chart';
+import DeleteBtn from '../components/DeleteButton';
+// import BuyBtn from '../components/BuyButton';
+import { List, ListItem } from '../components/Wishlist';
 
 class Main extends Component {
   state = {
+    wishlist: [],
+    boughtWishlist: [],
+    notBoughtWishlist: [],
     itemName: "",
     itemImage: "",
     itemPrice: "",
-
     monthlyIncome: "",
     rentOrMortgage: "",
     utilities: "",
@@ -19,9 +24,23 @@ class Main extends Component {
     misc: ""
   };
 
-  // componentDidMount() {
-  //   this.loadItems();
-  // }
+  componentDidMount() {
+    this.loadItems();
+  }
+
+  loadItems = () => {
+    API.getItems()
+    .then(res => {
+      let boughtWishlist = res.data.filter(item => item.bought === true)
+      let notBoughtWishlist = res.data.filter(item => item.bought === false)
+      console.log(boughtWishlist);
+      console.log(notBoughtWishlist);
+      this.setState({ boughtWishlist: boughtWishlist, notBoughtWishlist: notBoughtWishlist, wishlist: res.data, itemName: "", itemImage: "", itemPrice: ""})
+    }
+      )
+
+      .catch(err => console.log(err));
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -47,13 +66,13 @@ class Main extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.itemName && this.state.itemImage && this.state.itemPrice) {
-      console.log(this.state.itemImage)
+      console.log(this.state.wishlist)
       API.saveItem({
         name: this.state.itemName,
         image: this.state.itemImage,
         price: this.state.itemPrice
       })
-        .then(res => this.setState({itemName: "", itemImage: "", itemPrice: ""}))
+        .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
   };
@@ -102,6 +121,23 @@ class Main extends Component {
                 <Col sm={6}>
                   <div className="test">
                     <h3>Wishlist</h3>
+                    {this.state.wishlist.length ? (
+                      <List>
+                        {this.state.notBoughtWishlist.map(item => (
+                         <ListItem key={item.id}>
+                         <p>
+                           {item.name}
+                           <br/>
+                           {item.image}
+                           <br/>
+                           {item.price}
+                         </p>
+                       <DeleteBtn onClick={() => this.deleteItem(item.id)} />
+                      </ListItem>
+                    ))}
+                   </List>
+                    ) : ( <h3>No Results to Display</h3>
+                    )}
                   </div>
                 </Col>
               </Row>

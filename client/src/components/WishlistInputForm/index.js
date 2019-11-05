@@ -31,7 +31,9 @@ function WishlistInput(props) {
 
           <FormGroup check row>
             <Col sm={{ size: 20, offset: 6 }}>
-              <Button onClick={props.onClick}>Submit</Button>
+              <Button
+              disabled={!(props.item && props.image && props.price)} 
+              onClick={props.onClick}>Submit</Button>
             </Col>
           </FormGroup>
         </Form>

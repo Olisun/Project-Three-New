@@ -143,9 +143,11 @@ class Main extends Component {
                       {this.state.notBoughtWishlist.map(item => (
                         <ListItem key={item.id}>
                           <p>
-                            {item.name}
+                            <div className="img-container">
+                             <img height="100px" width="100px" alt={item.name} src={item.image}></img>
+                            </div>
                             <br />
-                            {item.image}
+                            {item.name}
                             <br />
                             {item.price}
                           </p>
@@ -168,9 +170,11 @@ class Main extends Component {
                   {this.state.boughtWishlist.map(item => (
                     <ListItem key={item.id}>
                       <p>
-                        {item.name}
+                        <div className="img-container">
+                          <img height="100px" width="100px" alt={item.name} src={item.image}></img>
+                        </div>
                         <br />
-                        {item.image}
+                        {item.name}
                         <br />
                         {item.price}
                       </p>

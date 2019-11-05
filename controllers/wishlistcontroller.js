@@ -2,22 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAllWishlist: function (req, res) {
-    db.Wishlist.findAll({
-      where: {
-        bought: false
-        // UserUuid: userID
-      }
-    }).then(function (dbWishlist) {
-      res.json(dbWishlist);
-    });
-  },
-  findAllBought: function (req, res) {
-    db.Wishlist.findAll({
-      where: {
-        bought: true
-        // UserUuid: userID
-      }
-    }).then(function (dbWishlist) {
+    db.Wishlist.findAll({}).then(function (dbWishlist) {
       res.json(dbWishlist);
     });
   },

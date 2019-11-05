@@ -8,6 +8,7 @@ import Rechart from '../components/Chart';
 import DeleteBtn from '../components/DeleteButton';
 import BuyBtn from '../components/BuyButton';
 import { List, ListItem } from '../components/Wishlist';
+import Chart2 from '../components/Chart2';
 
 
 class Main extends Component {
@@ -152,7 +153,7 @@ class Main extends Component {
                 />
               </Col>
               <Col sm={6}>
-                <Rechart />
+                <Chart2 />
               </Col>
               <Col sm={6}>
                 <WishlistInput

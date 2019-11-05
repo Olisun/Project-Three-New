@@ -54,7 +54,7 @@ function BudgetInput(props) {
 
           <FormGroup check row>
             <Col sm={{ size: 20, offset: 6 }}>
-              <Button onClick={props.handleFormSubmit}>Submit</Button>
+              <Button onClick={props.onClick}>Create</Button>
             </Col>
           </FormGroup>
         </Form>

@@ -45,7 +45,7 @@ module.exports = {
       Misc: req.body.Misc
     }, {
       where: {
-        id: req.params.id
+        id: req.body.id
       },
       returning: true
     }).then(function (dbBudget) {

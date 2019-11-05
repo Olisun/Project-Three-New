@@ -49,7 +49,7 @@ class Main extends Component {
   calculateAllowance = () => {
     let totalExpenses = (parseInt(this.state.rentOrMortgage) + parseInt(this.state.utilities) + parseInt(this.state.food) + parseInt(this.state.transportation) + parseInt(this.state.misc));
     let allowance = (parseInt(this.state.monthlyIncome) - parseInt(totalExpenses));
-    this.setState({totalExpenses: totalExpenses, allowance: allowance})
+    this.setState({ totalExpenses: totalExpenses, allowance: allowance })
     console.log(this.state.totalExpenses);
     console.log(this.state.allowance);
   }
@@ -65,6 +65,13 @@ class Main extends Component {
       .then(res => this.loadItems())
       .catch(err => console.log(err));
   };
+
+  updateBudget = id => {
+    budgetAPI.updateBudget(id)
+      .then(res => this.calculateAllowance())
+      // ^^ eventually this.loadChart()
+      .catch(err => console.log(err))
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -88,17 +95,36 @@ class Main extends Component {
     }
   };
 
-  handleFormSubmitBudget = event => {
+  // handleFormSubmitBudget = event => {
+  //   event.preventDefault();
+  //   if (this.state.monthlyIncome) {
+  //     budgetAPI.saveBudget({
+  //       Income: this.state.monthlyIncome,
+  //       Rent: this.state.rentOrMortgage,
+  //       Utilities: this.state.utilities,
+  //       Food: this.state.food,
+  //       Transportation: this.state.transportation,
+  //       Misc: this.state.misc
+  //     })
+  //       .then(res => this.calculateAllowance())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
+
+  handleFormSubmitUpdate = event => {
     event.preventDefault();
     if (this.state.monthlyIncome) {
-      budgetAPI.saveBudget({
-        Income: this.state.monthlyIncome,
-        Rent: this.state.rentOrMortgage,
-        Utilities: this.state.utilities,
-        Food: this.state.food,
-        Transportation: this.state.transportation,
-        Misc: this.state.misc
-      })
+      budgetAPI.updateBudget(
+        {
+          Income: this.state.monthlyIncome,
+          Rent: this.state.rentOrMortgage,
+          Utilities: this.state.utilities,
+          Food: this.state.food,
+          Transportation: this.state.transportation,
+          Misc: this.state.misc
+        }
+      
+      )
         .then(res => this.calculateAllowance())
         .catch(err => console.log(err));
     }
@@ -121,6 +147,7 @@ class Main extends Component {
                   miscellaneous={this.state.misc}
                   onChange={this.handleInputChange}
                   onClick={this.handleFormSubmitBudget}
+                  updateBudget={this.updateBudget}
                 />
               </Col>
               <Col sm={6}>
@@ -144,7 +171,7 @@ class Main extends Component {
                         <ListItem key={item.id}>
                           <p>
                             <div className="img-container">
-                             <img height="100px" width="100px" alt={item.name} src={item.image}></img>
+                              <img height="100px" width="100px" alt={item.name} src={item.image}></img>
                             </div>
                             <br />
                             {item.name}

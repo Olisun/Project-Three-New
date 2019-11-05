@@ -1,5 +1,3 @@
-// We made the components state-full rather than the pages. We are unsure if the stateful logic needs to be on the pages
-
 import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./style.css"
@@ -55,6 +53,9 @@ function BudgetInput(props) {
           <FormGroup check row>
             <Col sm={{ size: 20, offset: 6 }}>
               <Button onClick={props.onClick}>Create</Button>
+              <br/>
+              <br/>
+              <Button onClick={props.onClick}>Update</Button>
             </Col>
           </FormGroup>
         </Form>

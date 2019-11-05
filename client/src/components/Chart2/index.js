@@ -1,38 +1,70 @@
 import React, { Component } from 'react';
-import {Doughnut} from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 
 const data = {
+
 	labels: [
-		'Red',
-		'Green',
-		'Yellow'
+		"Rent",
+		"Utilities",
+		"Food",
+		"Transportation",
+		"Misc",
+		"Allowance"
 	],
 	datasets: [
-    {
-		data: [300, 50, 100],
-		backgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
-		],
-		hoverBackgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
-		]
-	}]
+		{
+			data: [4000, 1000, 100, 100, 50, 0],
+			backgroundColor: [
+				'red',
+				'yellow',
+				'blue',
+				'purple',
+				'orange',
+				'green'
+			],
+			hoverBackgroundColor: [
+				'red',
+				'yellow',
+				'blue',
+				'purple',
+				'orange',
+				'green'
+			],
+			label: "Pie 1"
+		},
+		{
+			data: [0, 0, 0, 0, 0, 1000],
+			backgroundColor: [
+				'red',
+				'yellow',
+				'blue',
+				'purple',
+				'orange',
+				'green'
+			],
+			hoverBackgroundColor: [
+				'red',
+				'yellow',
+				'blue',
+				'purple',
+				'orange',
+				'green'
+			],
+			label: "Pie 2"
+		}
+	]
 };
 
 class Chart2 extends Component {
-  render() {
+	render() {
 
-    return (
-      <div>
-        <h2>Doughnut Example</h2>
-        <Doughnut data={data} />
-      </div>
-    );
-  }
+		return (
+			<div>
+				<h2>Pie Example</h2>
+				<Pie data={data} />
+			</div>
+		);
+	}
 };
 
 export default Chart2

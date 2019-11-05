@@ -4,7 +4,6 @@ import BudgetInput from '../components/BudgetInputForm'
 import WishlistInput from '../components/WishlistInputForm';
 import API from '../utils/API-wishlist';
 import budgetAPI from '../utils/API-budget';
-import Rechart from '../components/Chart';
 import DeleteBtn from '../components/DeleteButton';
 import BuyBtn from '../components/BuyButton';
 import { List, ListItem } from '../components/Wishlist';
@@ -125,7 +124,7 @@ class Main extends Component {
           Transportation: this.state.transportation,
           Misc: this.state.misc
         }
-      
+
       )
         .then(res => this.calculateAllowance())
         .catch(err => console.log(err));
@@ -153,7 +152,9 @@ class Main extends Component {
                 />
               </Col>
               <Col sm={6}>
-                <Chart2 />
+                <div className="test">
+                  <Chart2 />
+                </div>
               </Col>
               <Col sm={6}>
                 <WishlistInput

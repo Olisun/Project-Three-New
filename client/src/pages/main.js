@@ -5,8 +5,9 @@ import WishlistInput from '../components/WishlistInputForm';
 import API from '../utils/API-wishlist'
 import Rechart from '../components/Chart';
 import DeleteBtn from '../components/DeleteButton';
-// import BuyBtn from '../components/BuyButton';
+import BuyBtn from '../components/BuyButton';
 import { List, ListItem } from '../components/Wishlist';
+
 
 class Main extends Component {
   state = {
@@ -42,6 +43,18 @@ class Main extends Component {
       .catch(err => console.log(err));
   }
 
+  deleteItem = id => {
+    API.deleteItem(id)
+      .then(res => this.loadItems())
+      .catch(err => console.log(err));
+  };
+
+  updateItem = id => {
+    API.updateItem(id)
+      .then(res => this.loadItems())
+      .catch(err => console.log(err));
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -49,19 +62,6 @@ class Main extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(this.state.itemName)
-  //   if (this.state.itemName && this.state.imageUrl && this.state.price) {
-  //     API.saveItem({
-  //       itemName: this.state.itemName,
-  //       imageUrl: this.state.imageUrl,
-  //       price: this.state.price
-  //     })
-  //       .then(res => this.setState({itemName: "", itemImage: "", itemPrice: ""}))
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -77,17 +77,6 @@ class Main extends Component {
     }
   };
 
-  // handleFormSubmit2 = event => {
-  //   event.preventDefault();
-  //   alert('button clicked')
-  //   if (this.state.monthlyIncome) {
-  //     // API.saveBudget({
-        
-  //     // })
-  //       .then(res => this.loadItems())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     return (
@@ -133,6 +122,7 @@ class Main extends Component {
                            {item.price}
                          </p>
                        <DeleteBtn onClick={() => this.deleteItem(item.id)} />
+                       <BuyBtn onClick={() => this.updateItem(item.id)} />
                       </ListItem>
                     ))}
                    </List>

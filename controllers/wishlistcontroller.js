@@ -29,7 +29,9 @@ module.exports = {
     });
   },
   update: function (req, res) {
-    db.Wishlist.update({
+    db.Wishlist.update(
+      {bought : true},
+      {
       where: {
         id: req.params.id
       }

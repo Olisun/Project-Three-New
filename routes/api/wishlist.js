@@ -7,11 +7,11 @@ router.route("/")
     .get(wishlistController.findAllWishlist)
     .post(wishlistController.create);
 
-router.route("/:id")
+
 // Matches with "/api/wishlist/:id"
-router
-    .route("/:id")
-    .delete(wishlistController.remove);
+router.route("/:id")
+    .delete(wishlistController.remove)
+    .put(wishlistController.update);
 
 
 module.exports = router;

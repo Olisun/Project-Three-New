@@ -55,7 +55,7 @@ function BudgetInput(props) {
               <Button onClick={props.onClick}>Create</Button>
               <br/>
               <br/>
-              <Button onClick={props.onClick}>Update</Button>
+              <Button onClick={props.updateBudget}>Update</Button>
             </Col>
           </FormGroup>
         </Form>

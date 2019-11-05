@@ -95,27 +95,28 @@ class Main extends Component {
     }
   };
 
-  // handleFormSubmitBudget = event => {
-  //   event.preventDefault();
-  //   if (this.state.monthlyIncome) {
-  //     budgetAPI.saveBudget({
-  //       Income: this.state.monthlyIncome,
-  //       Rent: this.state.rentOrMortgage,
-  //       Utilities: this.state.utilities,
-  //       Food: this.state.food,
-  //       Transportation: this.state.transportation,
-  //       Misc: this.state.misc
-  //     })
-  //       .then(res => this.calculateAllowance())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  handleFormSubmitBudget = event => {
+    event.preventDefault();
+    if (this.state.monthlyIncome) {
+      budgetAPI.saveBudget({
+        Income: this.state.monthlyIncome,
+        Rent: this.state.rentOrMortgage,
+        Utilities: this.state.utilities,
+        Food: this.state.food,
+        Transportation: this.state.transportation,
+        Misc: this.state.misc
+      })
+        .then(res => this.calculateAllowance())
+        .catch(err => console.log(err));
+    }
+  };
 
   handleFormSubmitUpdate = event => {
     event.preventDefault();
     if (this.state.monthlyIncome) {
       budgetAPI.updateBudget(
         {
+          id: 1,
           Income: this.state.monthlyIncome,
           Rent: this.state.rentOrMortgage,
           Utilities: this.state.utilities,
@@ -147,7 +148,7 @@ class Main extends Component {
                   miscellaneous={this.state.misc}
                   onChange={this.handleInputChange}
                   onClick={this.handleFormSubmitBudget}
-                  updateBudget={this.updateBudget}
+                  updateBudget={this.handleFormSubmitUpdate}
                 />
               </Col>
               <Col sm={6}>

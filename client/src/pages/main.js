@@ -17,15 +17,15 @@ class Main extends Component {
     notBoughtWishlist: [],
     itemName: "",
     itemImage: "",
-    itemPrice: "",
-    monthlyIncome: "",
-    rentOrMortgage: "",
-    utilities: "",
-    food: "",
-    transportation: "",
-    misc: "",
-    totalExpenses: "",
-    allowance: ""
+    itemPrice: 0,
+    monthlyIncome: 0,
+    rentOrMortgage: 0,
+    utilities: 0,
+    food: 0,
+    transportation: 0,
+    misc: 0,
+    totalExpenses: 0,
+    allowance: 0
   };
 
   componentDidMount() {
@@ -47,9 +47,11 @@ class Main extends Component {
   }
 
   calculateAllowance = () => {
-    let totalExpenses = (this.state.rentOrMortgage + this.state.utilities + this.state.food + this.state.transportation + this.state.misc);
-    let allowance = (this.state.monthlyIncome - totalExpenses);
+    let totalExpenses = (parseInt(this.state.rentOrMortgage) + parseInt(this.state.utilities) + parseInt(this.state.food) + parseInt(this.state.transportation) + parseInt(this.state.misc));
+    let allowance = (parseInt(this.state.monthlyIncome) - parseInt(totalExpenses));
     this.setState({totalExpenses: totalExpenses, allowance: allowance})
+    console.log(this.state.totalExpenses);
+    console.log(this.state.allowance);
   }
 
   deleteItem = id => {

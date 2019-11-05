@@ -31,13 +31,13 @@ class Main extends Component {
 
   loadItems = () => {
     API.getItems()
-    .then(res => {
-      let boughtWishlist = res.data.filter(item => item.bought === true)
-      let notBoughtWishlist = res.data.filter(item => item.bought === false)
-      console.log(boughtWishlist);
-      console.log(notBoughtWishlist);
-      this.setState({ boughtWishlist: boughtWishlist, notBoughtWishlist: notBoughtWishlist, wishlist: res.data, itemName: "", itemImage: "", itemPrice: ""})
-    }
+      .then(res => {
+        let boughtWishlist = res.data.filter(item => item.bought === true)
+        let notBoughtWishlist = res.data.filter(item => item.bought === false)
+        console.log(boughtWishlist);
+        console.log(notBoughtWishlist);
+        this.setState({ boughtWishlist: boughtWishlist, notBoughtWishlist: notBoughtWishlist, wishlist: res.data, itemName: "", itemImage: "", itemPrice: "" })
+      }
       )
 
       .catch(err => console.log(err));
@@ -80,65 +80,81 @@ class Main extends Component {
 
   render() {
     return (
-        <div className="container">
-          <Row>
-            <Col sm={8}>
-              <Row>
-                <Col sm={6}>
-                  <BudgetInput
-                  income = {this.state.monthlyIncome}
-                  rent = {this.state.rentOrMortgage}
-                  util = {this.state.utilities}
-                  groceries = {this.state.food}
-                  travel = {this.state.transportation}
-                  miscellaneous = {this.state.misc}
+      <div className="container">
+        <Row>
+          <Col sm={8}>
+            <Row>
+              <Col sm={6}>
+                <BudgetInput
+                  income={this.state.monthlyIncome}
+                  rent={this.state.rentOrMortgage}
+                  util={this.state.utilities}
+                  groceries={this.state.food}
+                  travel={this.state.transportation}
+                  miscellaneous={this.state.misc}
                   onChange={this.handleInputChange}
-                  />
-                </Col>
-                <Col sm={6}>
-                  <Rechart />
-                </Col>
-                <Col sm={6}>
-                  <WishlistInput
-                    item={this.state.itemName}
-                    image={this.state.itemImage}
-                    price={this.state.itemPrice}
-                    onChange={this.handleInputChange}
-                    onClick={this.handleFormSubmit}
-                  />
-                </Col>
-                <Col sm={6}>
-                  <div className="test">
-                    <h3>Wishlist</h3>
-                    {this.state.wishlist.length ? (
-                      <List>
-                        {this.state.notBoughtWishlist.map(item => (
-                         <ListItem key={item.id}>
-                         <p>
-                           {item.name}
-                           <br/>
-                           {item.image}
-                           <br/>
-                           {item.price}
-                         </p>
-                       <DeleteBtn onClick={() => this.deleteItem(item.id)} />
-                       <BuyBtn onClick={() => this.updateItem(item.id)} />
-                      </ListItem>
-                    ))}
-                   </List>
-                    ) : ( <h3>No Results to Display</h3>
+                />
+              </Col>
+              <Col sm={6}>
+                <Rechart />
+              </Col>
+              <Col sm={6}>
+                <WishlistInput
+                  item={this.state.itemName}
+                  image={this.state.itemImage}
+                  price={this.state.itemPrice}
+                  onChange={this.handleInputChange}
+                  onClick={this.handleFormSubmit}
+                />
+              </Col>
+              <Col sm={6}>
+                <div className="test">
+                  <h3>Wishlist</h3>
+                  {this.state.notBoughtWishlist.length ? (
+                    <List>
+                      {this.state.notBoughtWishlist.map(item => (
+                        <ListItem key={item.id}>
+                          <p>
+                            {item.name}
+                            <br />
+                            {item.image}
+                            <br />
+                            {item.price}
+                          </p>
+                          <DeleteBtn onClick={() => this.deleteItem(item.id)} />
+                          <BuyBtn onClick={() => this.updateItem(item.id)} />
+                        </ListItem>
+                      ))}
+                    </List>
+                  ) : (<h3>Start adding items!</h3>
                     )}
-                  </div>
-                </Col>
-              </Row>
-           </Col>
-           <Col sm={4}>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+          <Col sm={4}>
             <div className="test">
-              <h3>Bought</h3>
+              <h3>Bought Items</h3>
+              {this.state.boughtWishlist.length ? (
+                <List>
+                  {this.state.boughtWishlist.map(item => (
+                    <ListItem key={item.id}>
+                      <p>
+                        {item.name}
+                        <br />
+                        {item.image}
+                        <br />
+                        {item.price}
+                      </p>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (<h3>No items bought yet!</h3>
+                )}
             </div>
-           </Col>
-          </Row>
-        </div>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

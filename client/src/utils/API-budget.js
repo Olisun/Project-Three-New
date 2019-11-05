@@ -6,7 +6,7 @@ export default {
         return axios.get("/api/budget");
     },
 
-    getBudgetCategory: function (id) {
+    getBudgetProfile: function (id) {
         return axios.get("/api/budget/" + id);
     },
 

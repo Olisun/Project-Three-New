@@ -61,7 +61,11 @@ class Chart2 extends Component {
 		return (
 			<div>
 				<h2>Pie Example</h2>
-				<Pie data={data} />
+				<Pie 
+					data={data} 
+					height={1}
+					width={1}
+				/>
 			</div>
 		);
 	}

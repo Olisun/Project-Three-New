@@ -29,16 +29,15 @@ class Main extends Component {
 
   componentDidMount() {
     this.loadItems();
-  }
-
-  componentDidMount() {
     this.createBudget();
   }
+
 
   createBudget = () => {
     budgetAPI.getBudget()
       .then(res => {
-        if (res.data === []) {
+        let current = res.data;
+        if (current.length === 0) {
           budgetAPI.saveBudget({
             Income: 0,
             Rent: 0,

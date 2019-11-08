@@ -9,7 +9,6 @@ import BuyBtn from '../components/BuyButton';
 import { List, ListItem } from '../components/Wishlist';
 import Chart2 from '../components/Chart2';
 
-
 class Main extends Component {
   state = {
     wishlist: [],
@@ -259,3 +258,4 @@ class Main extends Component {
 }
 
 export default Main;
+

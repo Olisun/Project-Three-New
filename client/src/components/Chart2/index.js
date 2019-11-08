@@ -10,6 +10,7 @@ class Chart2 extends Component {
 
 		return (
 			<div>
+				
 				<h2>Your Expenses</h2>
 				<Pie data={{
 

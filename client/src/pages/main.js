@@ -32,6 +32,27 @@ class Main extends Component {
     this.loadItems();
   }
 
+  componentDidMount() {
+    this.createBudget();
+  }
+
+  createBudget = () => {
+    budgetAPI.getBudget()
+      .then(res => {
+        if (res.data === []) {
+          budgetAPI.saveBudget({
+            Income: 0,
+            Rent: 0,
+            Utilities: 0,
+            Food: 0,
+            Transportation: 0,
+            Misc: 0
+          })
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
   loadItems = () => {
     API.getItems()
       .then(res => {
@@ -47,9 +68,16 @@ class Main extends Component {
   }
 
   calculateAllowance = () => {
+    let income = parseInt(this.state.monthlyIncome);
+    let rent = parseInt(this.state.rentOrMortgage);
+    let utilities = parseInt(this.state.utilities);
+    let food = parseInt(this.state.food);
+    let transportation = parseInt(this.state.transportation);
+    let misc = parseInt(this.state.misc);
+
     let totalExpenses = (parseInt(this.state.rentOrMortgage) + parseInt(this.state.utilities) + parseInt(this.state.food) + parseInt(this.state.transportation) + parseInt(this.state.misc));
     let allowance = (parseInt(this.state.monthlyIncome) - parseInt(totalExpenses));
-    this.setState({ totalExpenses: totalExpenses, allowance: allowance })
+    this.setState({ totalExpenses: totalExpenses, allowance: allowance, monthlyIncome: income, rentOrMortgage: rent, utilities: utilities, transportation: transportation, food: food, misc: misc })
     console.log(this.state.totalExpenses);
     console.log(this.state.allowance);
   }
@@ -153,7 +181,16 @@ class Main extends Component {
               </Col>
               <Col sm={6}>
                 <div className="test">
-                  <Chart2 />
+                  <Chart2
+                    rent={this.state.rentOrMortgage}
+                    util={this.state.utilities}
+                    groceries={this.state.food}
+                    travel={this.state.transportation}
+                    miscellaneous={this.state.misc}
+                    income={this.state.monthlyIncome}
+                    expenses={this.state.totalExpenses}
+                    allowance={this.state.allowance}
+                  />
                 </div>
               </Col>
               <Col sm={6}>

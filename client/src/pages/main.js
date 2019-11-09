@@ -201,23 +201,26 @@ class Main extends Component {
                 />
               </Col>
               <Col sm={6}>
-                <div className="test">
+                <div className="test2">
                   <h3>Wishlist</h3>
                   {this.state.notBoughtWishlist.length ? (
-                    <List>
+                    <List className="list">
                       {this.state.notBoughtWishlist.map(item => (
-                        <ListItem key={item.id}>
+                        <ListItem className="listItem" key={item.id}>
                           <p>
                             <div className="img-container">
                               <img height="100px" width="100px" alt={item.name} src={item.image}></img>
                             </div>
+                            <div className="itemInfo">
+                            <strong>{item.name}</strong>
                             <br />
-                            {item.name}
-                            <br />
-                            {item.price}
+                            <strong>${item.price}</strong>
+                            </div>
                           </p>
+                          <div className="wishButtons">
                           <DeleteBtn onClick={() => this.deleteItem(item.id)} />
                           <BuyBtn onClick={() => this.updateItem(item.id)} />
+                          </div>
                         </ListItem>
                       ))}
                     </List>
@@ -231,17 +234,18 @@ class Main extends Component {
             <div className="test">
               <h3>Bought Items</h3>
               {this.state.boughtWishlist.length ? (
-                <List>
+                <List className="list">
                   {this.state.boughtWishlist.map(item => (
                     <ListItem key={item.id}>
                       <p>
                         <div className="img-container">
                           <img height="100px" width="100px" alt={item.name} src={item.image}></img>
                         </div>
+                        <div className="itemInfo">
+                        <strong>{item.name}</strong>
                         <br />
-                        {item.name}
-                        <br />
-                        {item.price}
+                        <strong>${item.price}</strong>
+                        </div>
                       </p>
                     </ListItem>
                   ))}

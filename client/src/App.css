@@ -3,7 +3,36 @@
   margin-top: 40px;
 }
 
+.test2 {
+  border: 1px solid black;
+  margin-top: 40px;
+}
+
+.listItem {
+  background: rgb(75,113,129);
+  background-blend-mode: normal;
+}
+
 .wrapper {
   border: 1px solid black
 }
 
+#root {
+  background: rgb(75,113,129);
+  background: linear-gradient(180deg, rgba(75,113,129,1) 0%, rgba(137,169,182,1) 48%, rgba(196,238,255,1) 100%);
+  }
+
+.img-container{
+  float: left;
+  padding: 10px
+}
+
+.itemInfo {
+  float: none;
+  
+}
+
+.wishButtons {
+  float: right;
+  padding: 10px
+}

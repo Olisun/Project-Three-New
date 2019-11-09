@@ -8,7 +8,7 @@ function Login(props) {
   return (
     <div className="container2">
       <Row>
-        <Col sm={10}>
+        <Col sm={12}>
           <h1 id="formLabel2" className="animated slideInLeft delay-1s">Can I Buy This?</h1>
         </Col>
       </Row>
@@ -38,23 +38,25 @@ function Login(props) {
             </FormGroup>
           </Form>
         </Col>
+        </Row>
+        <Row>
         <Col sm={6}>
           <Form className="animated zoomIn">
           <h3 id="formLabel">New Users</h3>
             <FormGroup row>
-              <Label for="newUser" sm={4}>Create Username:</Label>
+              <Label for="newUser" sm={3}>Username:</Label>
               <Col sm={5}>
                <Input type="text" name="newUser" value={props.newUser} onChange={props.onChange}  id="newUser" placeholder="Username" />
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="createPassword" sm={4}>Password:</Label>
+              <Label for="createPassword" sm={3}>Password:</Label>
               <Col sm={5}>
                 <Input type="createPassword" name="createPassword" value={props.newPw} onChange={props.onChange}  id="createPassword" placeholder="Create Password" />
               </Col>
             </FormGroup>
             <FormGroup check row>
-              <Col sm={{ size: 20, offset: 4 }}>
+              <Col sm={{ size: 20, offset: 3 }}>
                 <Button
                   disabled={!(props.newUser&& props.image && props.newPw)} 
                   onClick={props.onClick}>Submit 

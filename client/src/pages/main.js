@@ -26,7 +26,7 @@ class Main extends Component {
     misc: 0,
     totalExpenses: 0,
     allowance: 0,
-    userID: 0
+    userID: this.props.match.params
   };
 
 
@@ -38,9 +38,11 @@ class Main extends Component {
 componentDidMount() {
   this.loadItems();
   this.createBudget();
+  let { id } = this.props.match.params
+  console.log(id);
   // userAPI.getUser
   // this.setState({userID: user});
-  // console.log(this.state.userID)
+  console.log(this.state.userID)
 }
 
 createBudget = () => {
@@ -68,6 +70,7 @@ loadItems = () => {
       let notBoughtWishlist = res.data.filter(item => item.bought === false)
       console.log(boughtWishlist);
       console.log(notBoughtWishlist);
+      console.log(this.state.userID.id);
       this.setState({ boughtWishlist: boughtWishlist, notBoughtWishlist: notBoughtWishlist, wishlist: res.data, itemName: "", itemImage: "", itemPrice: "" })
     }
     )

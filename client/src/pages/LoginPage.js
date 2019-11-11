@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../components/Login';
 import API from '../utils/API-user';
+// import budgetAPI from '../utils/API-budget';
 
 
 class LoginPage extends Component {
@@ -9,35 +10,36 @@ class LoginPage extends Component {
     userName: "",
     password: "",
   };
-  
-  
+
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
-  
-  
+
+
   handleFormLogin = event => {
     event.preventDefault();
     if (this.state.userName && this.state.password) {
       API.getUsers()
-      .then(res => {
-        let users = res.data;
-        this.setState({userName: this.state.userName, password: this.state.password});
-        for (var i = 0; i < users.length; i++) {
-          if (users[i].username === this.state.userName && users[i].password === this.state.password) {
-            console.log("yes login works");
-            console.log(users[i].id);
-            window.location = "/main/" + users[i].id;
+        .then(res => {
+          let users = res.data;
+          this.setState({ userName: this.state.userName, password: this.state.password });
+          for (var i = 0; i < users.length; i++) {
+            if (users[i].username === this.state.userName && users[i].password === this.state.password) {
+              window.location = "/main/" + users[i].id
+
+            }
           }
-        }
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     }
   };
 
+
+  // need to add initial budget creation here because this only occurs once
   handleFormSignUp = event => {
     event.preventDefault();
     if (this.state.userName && this.state.password) {
@@ -45,11 +47,11 @@ class LoginPage extends Component {
         username: this.state.userName,
         password: this.state.password,
       })
-        .then(res => 
+        .then(res =>
           this.setState({
-          userName:"",
-          password:""
-        }))
+            userName: "",
+            password: ""
+          }))
         .catch(err => console.log(err));
     }
   };
@@ -57,7 +59,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="container2">
-        <Login 
+        <Login
           currentUser={this.state.userName}
           currentPw={this.state.password}
           onChange={this.handleInputChange}

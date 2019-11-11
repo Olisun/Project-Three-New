@@ -23,7 +23,8 @@ module.exports = {
       Utilities: req.body.Utilities,
       Food: req.body.Food,
       Transportation: req.body.Transportation,
-      Misc: req.body.Misc
+      Misc: req.body.Misc,
+      UserId: req.body.UserId
     }).then(function (newBudget) {
       res.json(newBudget)
     })

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./style.css"
 
@@ -52,9 +52,6 @@ function BudgetInput(props) {
 
           <FormGroup check row>
             <Col sm={{ size: 20, offset: 6 }}>
-              <Button onClick={props.onClick}>Create</Button>
-              <br/>
-              <br/>
               <Button onClick={props.updateBudget}>Update</Button>
             </Col>
           </FormGroup>

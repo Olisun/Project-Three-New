@@ -1,8 +1,7 @@
 import React from 'react';
-import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./style.css"
-import Animate from 'animate.css-react' 
-import 'animate.css/animate.css' 
+import 'animate.css/animate.css'
 
 function Login(props) {
   return (
@@ -15,57 +14,59 @@ function Login(props) {
       <Row>
         <Col sm={6}>
           <Form className="animated zoomIn">
-          <h3 id="formLabel">Current Users</h3>
+            <h3 id="formLabel">Current Users</h3>
             <FormGroup row>
-            <Label for="userName" sm={3}>Username:</Label>
+              <Label for="userName" sm={3}>Username:</Label>
               <Col sm={5}>
-                <Input type="text" name="userName" value={props.currentUser} onChange={props.onChange}  id="userName" placeholder="Username" />
+                <Input type="text" name="userName" value={props.currentUser} onChange={props.onChange} id="userName" placeholder="Username" />
               </Col>
             </FormGroup>
             <FormGroup row>
-            <Label for="password" sm={3}>Password:</Label>
+              <Label for="password" sm={3}>Password:</Label>
               <Col sm={5}>
-                <Input type="password" name="password" value={props.currentPw} onChange={props.onChange}  id="password" placeholder="Password" />
+                <Input type="password" name="password" value={props.currentPw} onChange={props.onChange} id="password" placeholder="Password" />
               </Col>
             </FormGroup>
             <FormGroup check row>
               <Col sm={{ size: 20, offset: 3 }}>
                 <Button
-                  disabled={!(props.currentUser && props.currentPw)} 
-                  onClick={props.onClick}>Submit 
+                  onClick={props.login}>Login
                 </Button>
-              </Col>
-            </FormGroup>
-          </Form>
-        </Col>
-        </Row>
-        <Row>
-        <Col sm={6}>
-          <Form className="animated zoomIn">
-          <h3 id="formLabel">New Users</h3>
-            <FormGroup row>
-              <Label for="newUser" sm={3}>Username:</Label>
-              <Col sm={5}>
-               <Input type="text" name="newUser" value={props.newUser} onChange={props.onChange}  id="newUser" placeholder="Username" />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="createPassword" sm={3}>Password:</Label>
-              <Col sm={5}>
-                <Input type="createPassword" name="createPassword" value={props.newPw} onChange={props.onChange}  id="createPassword" placeholder="Create Password" />
-              </Col>
-            </FormGroup>
-            <FormGroup check row>
-              <Col sm={{ size: 20, offset: 3 }}>
+                <span>           </span>
                 <Button
-                  disabled={!(props.newUser&& props.image && props.newPw)} 
-                  onClick={props.onClick}>Submit 
+                  onClick={props.signUp}>Sign Up
                 </Button>
               </Col>
             </FormGroup>
           </Form>
         </Col>
       </Row>
+      {/* <Row>
+        <Col sm={6}>
+          <Form className="animated zoomIn">
+            <h3 id="formLabel">New Users</h3>
+            <FormGroup row>
+              <Label for="user" sm={3}>Username:</Label>
+              <Col sm={5}>
+                <Input type="text" name="user" value={props.newUser} onChange={props.onChange} id="user" placeholder="Username" />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="createPassword" sm={3}>Password:</Label>
+              <Col sm={5}>
+                <Input type="password" name="createPassword" value={props.newPw} onChange={props.onChange} id="createPassword" placeholder="Create Password" />
+              </Col>
+            </FormGroup>
+            <FormGroup check row>
+              <Col sm={{ size: 20, offset: 3 }}>
+                <Button
+                  onClick={props.signUp}>Sign Up
+                </Button>
+              </Col>
+            </FormGroup>
+          </Form>
+        </Col>
+      </Row> */}
     </div>
   );
 }

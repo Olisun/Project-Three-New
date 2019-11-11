@@ -28,15 +28,15 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    // Budget.associate = function (models) {
+    Budget.associate = function (models) {
 
-    //     Budget.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         },
-    //         onDelete: 'cascade'
-    //     });
-    // };
+        Budget.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            },
+            onDelete: 'cascade'
+        });
+    };
 
     return Budget;
 }

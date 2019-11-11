@@ -2,11 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAll: function (req, res) {
-    // var userID = req.session.passport.user;
     db.Budget.findAll({
-      // where: {
-      //   UserUuid: userID
-      // }
     }).then(function (dbBudget) {
       res.json(dbBudget);
     });
@@ -21,8 +17,6 @@ module.exports = {
     });
   },
   create: function (req, res) {
-    // var userID = req.session.passport.user;
-    // console.log(req.body)
     db.Budget.create({
       Income: req.body.Income,
       Rent: req.body.Rent,
@@ -30,7 +24,6 @@ module.exports = {
       Food: req.body.Food,
       Transportation: req.body.Transportation,
       Misc: req.body.Misc
-      // UserUuid: userID
     }).then(function (newBudget) {
       res.json(newBudget)
     })

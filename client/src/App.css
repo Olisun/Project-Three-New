@@ -1,11 +1,26 @@
 .test {
   border: 1px solid black;
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  padding: 10px;
+  box-shadow: 5px 10px rgba(11, 19, 43, 1);
+  border-radius: 10px;
 }
 
 .test2 {
   border: 1px solid black;
+  /* margin-top: 40px; */
+  padding: 10px;
+  box-shadow: 5px 10px rgba(11, 19, 43, 1);
+  border-radius: 10px;
+}
+
+.test3 {
+  border: 1px solid black;
   margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 5px 10px rgba(11, 19, 43, 1);
+  border-radius: 10px;
 }
 
 .listItem {
@@ -35,4 +50,9 @@
 .wishButtons {
   float: right;
   padding: 10px
+}
+
+#formLabel2 {
+  font-family: "Abril Fatface";
+  font-size: 100px;
 }

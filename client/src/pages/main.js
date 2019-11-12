@@ -9,6 +9,7 @@ import DeleteBtn from '../components/DeleteButton';
 import BuyBtn from '../components/BuyButton';
 import { List, ListItem } from '../components/Wishlist';
 import Chart2 from '../components/Chart2';
+import "../App.css";
 
 class Main extends Component {
   state = {
@@ -153,7 +154,7 @@ class Main extends Component {
                 />
               </Col>
               <Col sm={6}>
-                <div className="test">
+                <div className="test3">
                   <Chart2
                     rent={this.state.rentOrMortgage}
                     util={this.state.utilities}
@@ -177,7 +178,7 @@ class Main extends Component {
                 />
               </Col>
               <Col sm={6}>
-                <div className="test2">
+                <div className="test3">
                   <h3>Wishlist</h3>
                   {this.state.notBoughtWishlist.length ? (
                     <List className="list">
@@ -207,7 +208,7 @@ class Main extends Component {
             </Row>
           </Col>
           <Col sm={4}>
-            <div className="test">
+            <div className="test3">
               <h3>Bought Items</h3>
               {this.state.boughtWishlist.length ? (
                 <List className="list">

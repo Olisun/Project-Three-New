@@ -1,13 +1,10 @@
-.chart-container {
-   
-   height: 400px;
-   width: 400px
+canvas {
+  color: black;
 }
-
-
 
 .chartjs-render-monitor {
   height: 300px;
   width: 200px;
+  color: black;
 }
 

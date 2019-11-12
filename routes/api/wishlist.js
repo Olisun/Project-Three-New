@@ -10,6 +10,7 @@ router.route("/")
 
 // Matches with "/api/wishlist/:id"
 router.route("/:id")
+    .get(wishlistController.findAllWishlist)
     .delete(wishlistController.remove)
     .put(wishlistController.update);
 

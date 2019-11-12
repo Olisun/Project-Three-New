@@ -5,11 +5,11 @@ const budgetController = require("../../controllers/budgetcontroller");
 router.route("/")
     .get(budgetController.findAll)
     .post(budgetController.create)
-    .put(budgetController.update);
 
 // Matches with "/api/budget/:id"
 router.route("/:id")
-    .get(budgetController.findOne);
+    .get(budgetController.findOne)
+    .put(budgetController.update);
     
 
 module.exports = router;

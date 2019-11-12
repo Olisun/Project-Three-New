@@ -39,7 +39,7 @@ module.exports = {
       Misc: req.body.Misc
     }, {
       where: {
-        id: req.body.id
+        UserId: req.params.id
       },
       returning: true
     }).then(function (dbBudget) {

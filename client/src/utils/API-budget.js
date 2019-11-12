@@ -14,8 +14,8 @@ export default {
         return axios.delete("/api/budget/" + id);
     },
 
-    updateBudget: function (data) {
-        return axios.put("/api/budget", data);
+    updateBudget: function (id, body) {
+        return axios.put("/api/budget/" + id, body);
     },
 
     saveBudget: function (budgetData) {

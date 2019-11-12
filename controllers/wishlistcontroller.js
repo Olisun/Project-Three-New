@@ -2,7 +2,11 @@ const db = require("../models");
 
 module.exports = {
   findAllWishlist: function (req, res) {
-    db.Wishlist.findAll({}).then(function (dbWishlist) {
+    db.Wishlist.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function (dbWishlist) {
       res.json(dbWishlist);
     });
   },
@@ -13,7 +17,8 @@ module.exports = {
       name: req.body.name,
       image: req.body.image,
       price: req.body.price,
-      bought: false
+      bought: false,
+      UserId: req.body.UserId
     }).then(function (newWishlist) {
       console.log(newWishlist)
       res.json(newWishlist);

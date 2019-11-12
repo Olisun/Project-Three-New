@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Login from '../components/Login';
 import API from '../utils/API-user';
-// import budgetAPI from '../utils/API-budget';
+import budgetAPI from '../utils/API-budget';
+import APIBudget from '../utils/API-budget';
 
 
 class LoginPage extends Component {
@@ -48,6 +49,15 @@ class LoginPage extends Component {
         password: this.state.password,
       })
         .then(res =>
+          APIBudget.saveBudget({
+            Income: 0,
+            Rent: 0,
+            Utilities: 0,
+            Food: 0,
+            Transportation: 0,
+            Misc: 0,
+            UserId: res.data.id
+          }),
           this.setState({
             userName: "",
             password: ""

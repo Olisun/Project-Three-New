@@ -6,8 +6,8 @@ export default {
     return axios.get("/api/wishlist");
   },
 
-  getItem: function(id) {
-    return axios.get("/api/wishlist/" + id);
+  getUserItems: function(UserId) {
+    return axios.get("/api/wishlist/" + UserId);
   },
 
   deleteItem: function(id) {

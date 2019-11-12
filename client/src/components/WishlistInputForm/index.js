@@ -5,7 +5,7 @@ import "./style.css"
 function WishlistInput(props) {
 
     return (
-      <div className="test">
+      <div className="test3">
         <Form>
           <h3 id="formLabel">Wishlist Input Form</h3>
           <FormGroup row>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import "./style.css"
 import 'animate.css/animate.css'
 
 function Login(props) {
@@ -12,9 +11,9 @@ function Login(props) {
         </Col>
       </Row>
       <Row>
-        <Col sm={6}>
-          <Form className="animated zoomIn">
-            <h3 id="formLabel">Current Users</h3>
+        <Col sm={4}>
+          <Form className="animated zoomIn" className="test">
+            <h3 id="formLabel">Login</h3>
             <FormGroup row>
               <Label for="userName" sm={3}>Username:</Label>
               <Col sm={5}>

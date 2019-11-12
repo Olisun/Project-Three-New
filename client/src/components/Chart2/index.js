@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
+import "./style.css"
 
 class Chart2 extends Component {
 	constructor(props) {
@@ -38,10 +39,21 @@ class Chart2 extends Component {
 								'green',
 								'blue'
 							],
-							label: "Expenses"
+							label: "Expenses",
+							
 						}
 					]
-				}} />
+				}}
+
+				options= {{
+        legend: {
+             labels: {
+                  fontColor: 'black'
+                 }
+              }
+				}}
+					height={1}
+					width={1} />
 
 				<p>Your Income: ${this.props.income}</p>
 				<p>Your Total Expenses: ${this.props.expenses}</p>

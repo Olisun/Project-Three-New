@@ -3,6 +3,8 @@ import Login from '../components/Login';
 import API from '../utils/API-user';
 import budgetAPI from '../utils/API-budget';
 import APIBudget from '../utils/API-budget';
+import ParticlesComponent from '../components/Particles'
+import ThreeScene from '../components/Three';
 
 
 class LoginPage extends Component {
@@ -71,6 +73,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="container2">
+        <ThreeScene />
+        <div className="test">
+
         <Login
           currentUser={this.state.userName}
           currentPw={this.state.password}
@@ -78,6 +83,7 @@ class LoginPage extends Component {
           signUp={this.handleFormSignUp}
           login={this.handleFormLogin}
         />
+        </div>
       </div>
     )
   }

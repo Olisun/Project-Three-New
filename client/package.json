@@ -10,12 +10,16 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.9.2",
     "react": "^16.11.0",
+    "react-anime": "^2.2.0",
     "react-chartjs-2": "^2.8.0",
     "react-dom": "^16.11.0",
+    "react-particles-js": "^2.7.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "reactstrap": "^8.1.1",
-    "recharts": "^1.8.5"
+    "recharts": "^1.8.5",
+    "three": "^0.110.0",
+    "three-js": "^79.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

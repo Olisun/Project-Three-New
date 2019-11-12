@@ -61,7 +61,9 @@ class LoginPage extends Component {
           this.setState({
             userName: "",
             password: ""
-          }))
+          }),
+          alert("You successfully created an account!")
+          )
         .catch(err => console.log(err));
     }
   };

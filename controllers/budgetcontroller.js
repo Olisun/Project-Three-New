@@ -10,7 +10,7 @@ module.exports = {
   findOne: function (req, res) {
     db.Budget.findOne({
       where: {
-        id: req.params.id
+        UserId: req.params.id
       }
     }).then(function (dbBudget) {
       res.json(dbBudget);

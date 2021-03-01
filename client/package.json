@@ -18,7 +18,7 @@
     "react-scripts": "3.2.0",
     "reactstrap": "^8.1.1",
     "recharts": "^1.8.5",
-    "three": "^0.110.0",
+    "three": "^0.125.0",
     "three-js": "^79.0.0"
   },
   "scripts": {
